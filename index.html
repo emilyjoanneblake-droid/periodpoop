@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poo & Flow Tally</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__text">
+      <p class="eyebrow">Daily doodie + cycle vibes</p>
+      <h1>Poo & Flow Tally</h1>
+      <p class="lede">Log each toot-to-table trip, spot patterns with your menstrual cycle, and get gentle reminders to tally up.</p>
+      <div class="hero__actions">
+        <button id="add-poo" class="btn primary">I just went 💩</button>
+        <button id="enable-reminders" class="btn ghost">Enable reminders 🔔</button>
+      </div>
+      <p id="last-reminder" class="caption"></p>
+    </div>
+    <div class="hero__character" aria-hidden="true">
+      <div class="sprout-pal large">
+        <div class="sprout-head">
+          <div class="sprout-leaf"></div>
+          <div class="sprout-leaf second"></div>
+          <div class="sprout-face">
+            <div class="sprout-eye"></div>
+            <div class="sprout-eye"></div>
+            <div class="sprout-smile"></div>
+          </div>
+        </div>
+        <div class="sprout-body">
+          <div class="sprout-bib"></div>
+          <div class="sprout-feet">
+            <div class="foot"></div>
+            <div class="foot"></div>
+          </div>
+        </div>
+        <div class="sprout-shadow"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <header class="card__header">
+        <div>
+          <p class="eyebrow">Today</p>
+          <h2>Poop Tally</h2>
+        </div>
+        <button id="reset-day" class="btn text">Reset day</button>
+      </header>
+      <div class="counter">
+        <div>
+          <p class="counter__label">Today's count</p>
+          <p id="today-count" class="counter__value">0</p>
+        </div>
+        <div>
+          <p class="counter__label">Last log</p>
+          <p id="last-log" class="counter__value">—</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <header class="card__header">
+        <div>
+          <p class="eyebrow">Cycle</p>
+          <h2>Track period</h2>
+        </div>
+      </header>
+      <div class="form-grid">
+        <label class="field">
+          <span>Start of your last period</span>
+          <input type="date" id="cycle-start" />
+        </label>
+        <label class="field">
+          <span>Average cycle length (days)</span>
+          <input type="number" id="cycle-length" min="20" max="40" value="28" />
+        </label>
+        <label class="field">
+          <span>Period length (days)</span>
+          <input type="number" id="period-length" min="2" max="10" value="5" />
+        </label>
+        <button id="save-cycle" class="btn primary">Save cycle info</button>
+      </div>
+      <p class="caption" id="cycle-summary"></p>
+    </section>
+
+    <section class="card">
+      <header class="card__header">
+        <div>
+          <p class="eyebrow">Past week</p>
+          <h2>7-day calendar</h2>
+        </div>
+      </header>
+      <div class="week-calendar" id="week-calendar"></div>
+      <p class="caption">Counts stay cozy for the last 7 days with period days highlighted.</p>
+    </section>
+
+    <section class="card">
+      <header class="card__header">
+        <div>
+          <p class="eyebrow">Insights</p>
+          <h2>Poo & flow patterns</h2>
+        </div>
+        <button id="clear-all" class="btn text">Clear all data</button>
+      </header>
+      <div class="chart" id="chart"></div>
+      <p class="caption" id="insight"></p>
+    </section>
+
+    <section class="card characters">
+      <header class="card__header">
+        <div>
+          <p class="eyebrow">Mood boosters</p>
+          <h2>Bubble buddies</h2>
+        </div>
+      </header>
+      <div class="buddy-row">
+        <div class="sprout-pal">
+          <div class="sprout-head">
+            <div class="sprout-leaf"></div>
+            <div class="sprout-leaf second"></div>
+            <div class="sprout-face">
+              <div class="sprout-eye"></div>
+              <div class="sprout-eye"></div>
+              <div class="sprout-smile"></div>
+            </div>
+          </div>
+          <div class="sprout-body">
+            <div class="sprout-bib"></div>
+            <div class="sprout-feet">
+              <div class="foot"></div>
+              <div class="foot"></div>
+            </div>
+          </div>
+          <div class="sprout-shadow"></div>
+        </div>
+        <div class="sprout-pal peach">
+          <div class="sprout-head">
+            <div class="sprout-leaf"></div>
+            <div class="sprout-leaf second"></div>
+            <div class="sprout-face">
+              <div class="sprout-eye"></div>
+              <div class="sprout-eye"></div>
+              <div class="sprout-smile"></div>
+            </div>
+          </div>
+          <div class="sprout-body">
+            <div class="sprout-bib"></div>
+            <div class="sprout-feet">
+              <div class="foot"></div>
+              <div class="foot"></div>
+            </div>
+          </div>
+          <div class="sprout-shadow"></div>
+        </div>
+        <div class="sprout-pal lilac">
+          <div class="sprout-head">
+            <div class="sprout-leaf"></div>
+            <div class="sprout-leaf second"></div>
+            <div class="sprout-face">
+              <div class="sprout-eye"></div>
+              <div class="sprout-eye"></div>
+              <div class="sprout-smile"></div>
+            </div>
+          </div>
+          <div class="sprout-body">
+            <div class="sprout-bib"></div>
+            <div class="sprout-feet">
+              <div class="foot"></div>
+              <div class="foot"></div>
+            </div>
+          </div>
+          <div class="sprout-shadow"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Built to celebrate body rhythms with kindness.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
